@@ -17,68 +17,57 @@ class MyApp extends StatelessWidget {
         // useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const soir(),
+      home: const MyHomePageStata(),
     );
   }
 }
 
-class soir extends StatefulWidget {
-  const soir({super.key});
+class MyHomePageStata extends StatefulWidget {
+  const MyHomePageStata({super.key});
+
   @override
-  State<soir> createState() => _soirState();
+  State<MyHomePageStata> createState() => _MyHomePageStataState();
 }
 
-class _soirState extends State<soir> {
-  var titre = "Bienvenue etsiam";
-  String value1 = "le premier bouton";
-  String value2 = "le 2eme bouton";
-  void initState() {
-    // TODO: implement initState
-    titre = "ElevatedButton";
-  }
-
-  void onClick1(){
-    setState(() {
-      value1 = "tutoriel pour les debutant";
-    });  
-  }
-
-  void onClick2(String value){
-    setState(() {
-      value2 = value;
-    });
-    
-  }
+class _MyHomePageStataState extends State<MyHomePageStata> {
+  int note = 0;
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text(titre),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: const Text("1er bouton", style: TextStyle(color:Colors.black, fontSize: 25),),
-              onPressed: () => onClick1(),
-            ),
+      appBar: AppBar(
+        title: const Text('textButton & IconButton', style: TextStyle(color: Colors.black),),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          TextButton(
+            onPressed: (){
+              debugPrint("le boutton est pressé");
+            }, 
+            child: const Text('TextButton', style: TextStyle(fontSize: 30),)),
             
-            Text(value1, style: TextStyle(fontSize: 50, color: Colors.green[300]),),
-
-            Divider(height: 10,),
-
-            ElevatedButton(
-              child: const Text("2eme bouton", style: TextStyle(color:Colors.red, fontSize: 25),),
+            IconButton(
               onPressed: (){
-                onClick2("Tutoriel pour les professionnels");
-              },
-            ),
+                setState(() {
+                  note++;
+                }); 
+              }, 
+              icon: const Icon(Icons.thumb_up, color: Colors.green, size: 50,),
+               tooltip: 'j\'aime',
+               ),
 
-            Text(value2, style: TextStyle(fontSize: 50, color: Colors.blue[300]),),
+            Text('Votre point de vue : $note', style: TextStyle(color: Color.fromARGB(255, 69, 126, 169), fontSize: 30),),
 
-          ],
-        ),
+            IconButton(
+              onPressed: (){
+                setState(() {
+                  note--;
+                }); 
+              }, 
+              icon: const Icon(Icons.thumb_down, color: Colors.red, size: 50,),
+               tooltip: 'j\'aime pas',
+               ),
+        ]),
     );
   }
 }
