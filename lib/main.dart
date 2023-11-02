@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
         // useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: soir(),
+      home: const soir(),
     );
   }
 }
@@ -31,26 +30,55 @@ class soir extends StatefulWidget {
 
 class _soirState extends State<soir> {
   var titre = "Bienvenue etsiam";
-  @override
+  String value1 = "le premier bouton";
+  String value2 = "le 2eme bouton";
   void initState() {
     // TODO: implement initState
-    titre = "ça c'est moi";
+    titre = "ElevatedButton";
+  }
+
+  void onClick1(){
+    setState(() {
+      value1 = "tutoriel pour les debutant";
+    });  
+  }
+
+  void onClick2(String value){
+    setState(() {
+      value2 = value;
+    });
+    
   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           title: Text(titre),
         ),
-        body: ElevatedButton(
-          onPressed:(){
-            print('bouton pressé');
-           setState(() {
-             titre = "une operation";
-           });
-          }, 
-          child:const Text('presser'),
-          ),
-        );
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: const Text("1er bouton", style: TextStyle(color:Colors.black, fontSize: 25),),
+              onPressed: () => onClick1(),
+            ),
+            
+            Text(value1, style: TextStyle(fontSize: 50, color: Colors.green[300]),),
+
+            Divider(height: 10,),
+
+            ElevatedButton(
+              child: const Text("2eme bouton", style: TextStyle(color:Colors.red, fontSize: 25),),
+              onPressed: (){
+                onClick2("Tutoriel pour les professionnels");
+              },
+            ),
+
+            Text(value2, style: TextStyle(fontSize: 50, color: Colors.blue[300]),),
+
+          ],
+        ),
+    );
   }
 }
