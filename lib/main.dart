@@ -31,41 +31,44 @@ class MyHomePageStata extends StatefulWidget {
 
 
 class _MyHomePageStataState extends State<MyHomePageStata> {
-  String heure = '';
+  bool val1 = false;
+  bool val2 = false;
 
-  void onShow()
-  {
+  void change1(bool b){
     setState(() {
-            heure = DateTime.now().toString();
-          });
+      val1=b;
+    });
   }
+
+  void change2(bool t){
+      setState(() {
+        val2=t;
+      });
+    }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('floatingActionButton'),
+        title: const Text("Slider & Switch", ),
       ),
-      body: Column(
-        children: [
-          Text(
-            'date &heure = $heure',
-            style: const TextStyle(
-              color: Colors.blue,
-              fontSize: 40,
-            ),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          onShow();
-        },
-        backgroundColor: Colors.red,
-        child: const Icon(
-          Icons.timer,
-        ),
-      ),
+
+      body: Center(
+        child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Switch(value: val1, onChanged: change1, activeColor: Colors.green,),
+
+            SwitchListTile(
+              value: val2, 
+              onChanged: change2,
+              activeColor: Colors.red,
+              title: const Text('Allume la torche', style: TextStyle(color: Colors.red),),
+              )
+        ]),
+      )
     );
+    
+    
   }
 }
