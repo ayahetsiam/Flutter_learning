@@ -63,7 +63,7 @@ class _MyHomePageStataState extends State<MyHomePageStata> {
               value: val2, 
               onChanged: change2,
               activeColor: Colors.red,
-              title: const Text('Allume la torche', style: TextStyle(color: Colors.red),),
+              title: const Text("interrupteur", style: TextStyle(color: Colors.red),),
               )
         ]),
       )
