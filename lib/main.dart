@@ -5,7 +5,11 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  
   const MyApp({super.key});
+
+ 
 
   // This widget is the root of your application.
   @override
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         // useMaterial3: true,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
       home: const MyHomePageStata(),
     );
@@ -25,70 +29,57 @@ class MyApp extends StatelessWidget {
 class MyHomePageStata extends StatefulWidget {
   const MyHomePageStata({super.key});
 
+  
   @override
   State<MyHomePageStata> createState() => _MyHomePageStataState();
 }
 
 class _MyHomePageStataState extends State<MyHomePageStata> {
-  bool val1 = false;
-  bool val2 = false;
-  double val3 = 0.0;
+  //final nomController=TextEditingController();
+String nom = "";
 
-  void change1(bool b) {
-    setState(() {
-      val1 = b;
-    });
+void afficher(String a){
+  setState(() {
+     nom = "bienvenu $a";
+  });
+    // print(nom);
   }
 
-  void change3(double b) {
-    setState(() {
-      val3 = b;
-    });
-  }
-
-  void change2(bool t) {
-    setState(() {
-      val2 = t;
-    });
+  void submit(String a){
+  setState(() {
+     nom = "vous avez envoyé: $a";
+  });
+    // print(nom);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Slider & Switch",
-          ),
+      appBar: AppBar(
+        title: const Text(
+          "Textfield",
         ),
-        body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Switch(
-              value: val1,
-              onChanged: change1,
-              activeColor: Colors.green,
-            ),
-            SwitchListTile(
-              value: val2,
-              onChanged: change2,
-              activeColor: Colors.red,
-              title: const Text(
-                "interrupteur",
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(nom, style: const TextStyle(color: Colors.black, fontSize: 40, fontWeight: FontWeight.bold),),
+            TextField(
+              //controller: nomController,
+              decoration: const InputDecoration(
+                labelText: 'Nom',
+                icon: Icon(Icons.person, size: 50,),
+                iconColor: Color.fromARGB(255, 10, 12, 12),
               ),
-            ),
-            Text(
-              "le curseur ${(val3*100).round()}",
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30),
-            ),
-            Slider(
-              value: val3,
-              onChanged: change3,
-              activeColor: Colors.black,
+              keyboardType: TextInputType.text,
+              onChanged: afficher,
+              onSubmitted: submit,
+
             )
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 }
