@@ -1,89 +1,127 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() => runApp(const MyApp());
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        // useMaterial3: true,
-        //primarySwatch: Colors.brown,
-      ),
+    return const  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MyHomePageStata(),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePageStata extends StatefulWidget {
-  const MyHomePageStata({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePageStata> createState() => _MyHomePageStataState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageStataState extends State<MyHomePageStata> {
-  int value = 0;
-  void augmenter(){
-    setState(() {
-      value++;
-    });
-  }
-  void diminuer(){
-    setState(() {
-      value--;
-    });
-  }
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        //centerTitle: true,
-        title: const Text(
-          "Fichier",
-          style: TextStyle(color: Colors.black,
-          fontSize: 30,fontWeight: FontWeight.bold),
+      appBar: AppBar(),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            const DrawerHeader(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.red,
+                      Colors.white38,
+                    ],
+                  ),
+                ),
+                child:  Center(
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage(''),
+                  ),
+                )
+          ),
+            ListTile(
+              title: const Text(
+                'Quiz',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+              }
+            ),
+            const Divider(
+              height: 2,
+              color: Colors.deepOrange,
+            ),
+            ListTile(
+              trailing: IconButton(
+                icon: const Icon(Icons.more_vert),
+                onPressed: () {},
+              ),
+              leading: const Icon(Icons.message),
+              title: const Text(
+                'Weather',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+              }
+            ),
+            const Divider(
+              height: 2,
+              color: Colors.deepOrange,
+            ),
+            ListTile(
+              title: const Text(
+                'Gallery',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+              }
+            ),
+            const Divider(
+              height: 2,
+              color: Colors.deepOrange,
+            ),
+            ListTile(
+              title: const Text(
+                'Camera',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+              }
+            ),
+          ],
         ),
-        leading: const Icon(Icons.file_open,
-        size: 40,
-        color: Colors.black,),
-        actions:[
-          
-
-          IconButton(
-          onPressed:(){
-            augmenter();
-          }, 
-          icon: const Icon(Icons.upload, 
-          size: 40,
-          color: Colors.black,),),
-          
-          IconButton(
-          onPressed:(){
-            diminuer();
-          }, 
-          icon: const Icon(Icons.download, 
-          size: 40,
-          color: Colors.black,),),
-          
-        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           const Text('Faisons un text en même temps'),
-            const Padding(padding: EdgeInsets.only()),
-            Text(value.toString()),
-          ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+           BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+              label: "person"
+          ),
+           BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+              label: "person"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "person"
+          ),
+        ],
+
       ),
     );
   }
