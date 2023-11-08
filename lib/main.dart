@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const  MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -27,85 +27,94 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String val = " ama";
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(val),
+      ),
       drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
+        backgroundColor: Color.fromARGB(255, 229, 18, 18),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
             const DrawerHeader(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.red,
-                      Colors.white38,
-                    ],
-                  ),
-                ),
-                child:  Center(
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage(''),
-                  ),
-                )
-          ),
-            ListTile(
-              title: const Text(
-                'Quiz',
-                style: TextStyle(fontSize: 20),
+              child: Text(
+                "La liste des enfants",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),),
               ),
-              onTap: () {
-                Navigator.of(context).pop();
-              }
-            ),
-            const Divider(
-              height: 2,
-              color: Colors.deepOrange,
-            ),
-            ListTile(
-              trailing: IconButton(
-                icon: const Icon(Icons.more_vert),
-                onPressed: () {},
+              ListTile(
+                title: const Text("Etsiam",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,)),
+                onTap: (){
+                  setState(() {
+                    val="Etsiam";
+                  });
+                },
               ),
-              leading: const Icon(Icons.message),
-              title: const Text(
-                'Weather',
-                style: TextStyle(fontSize: 20),
+
+              ListTile(
+                title: const Text("Vivien",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,)),
+                onTap: (){
+                  setState(() {
+                    val="Vivien";
+                  });
+                },
               ),
-              onTap: () {
-                Navigator.of(context).pop();
-              }
-            ),
-            const Divider(
-              height: 2,
-              color: Colors.deepOrange,
-            ),
-            ListTile(
-              title: const Text(
-                'Gallery',
-                style: TextStyle(fontSize: 20),
+
+              ListTile(
+                title: const Text("Diane",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,)),
+                onTap: (){
+                  setState(() {
+                    val="Diane";
+                  });
+                },
               ),
-              onTap: () {
-                Navigator.of(context).pop();
-              }
-            ),
-            const Divider(
-              height: 2,
-              color: Colors.deepOrange,
-            ),
-            ListTile(
-              title: const Text(
-                'Camera',
-                style: TextStyle(fontSize: 20),
+
+              ListTile(
+                title: const Text("Caleb",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,)),
+                onTap: (){
+                  setState(() {
+                    val="Caleb";
+                  });
+                },
               ),
-              onTap: () {
-                Navigator.of(context).pop();
-              }
-            ),
+              ListTile(
+                title: const Text("Bernadin",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,)),
+                onTap: (){
+                  setState(() {
+                    val="Bernadin";
+                  });
+                },
+              ),
           ],
         ),
-      ),
+        ),
     );
   }
 }
