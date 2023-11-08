@@ -106,23 +106,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-              label: "person"
-          ),
-           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-              label: "person"
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "person"
-          ),
-        ],
-
-      ),
     );
   }
 }
