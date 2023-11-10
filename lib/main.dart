@@ -28,21 +28,62 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String val = " ama";
+
+  void afficher(BuildContext context) {
+    //  showBottomSheet(context: context, builder: (BuildContext context){
+    //
+    //  });
+  }
+
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(),
-      persistentFooterButtons: const [
-          IconButton(
-          onPressed: null, 
-          icon: Icon(Icons.access_alarm_outlined)
+      // persistentFooterButtons: const [
+      //     IconButton(
+      //     onPressed: null,
+      //     icon: Icon(Icons.access_alarm_outlined)
+      //     ),
+      //     IconButton(
+      //     onPressed: null,
+      //     icon: Icon(Icons.ac_unit_sharp)
+      //     ),
+      // ],
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            val,
+            style: const TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          IconButton(
-          onPressed: null, 
-          icon: Icon(Icons.ac_unit_sharp)
-          ),
-      ],
+          TextButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      padding: const EdgeInsets.all(20),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("voilà",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+              child: const Text("Click ici"))
+        ],
+      ),
+     
     );
   }
 }
