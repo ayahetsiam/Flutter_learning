@@ -33,22 +33,16 @@ class _MyHomePageState extends State<MyHomePage> {
     
     return Scaffold(
       appBar: AppBar(),
-      drawer: const Drawer(backgroundColor: Colors.blue,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          DrawerHeader(
-            child: Text('Menu')),
-            ListTile(
-              title: Text(
-                "Acueil", 
-                selectionColor: Colors.brown,
-              ),
-              onTap: null,
-              leading: Icon(Icons.home),
-            )
-      ]),
-      ),
+      persistentFooterButtons: const [
+          IconButton(
+          onPressed: null, 
+          icon: Icon(Icons.access_alarm_outlined)
+          ),
+          IconButton(
+          onPressed: null, 
+          icon: Icon(Icons.ac_unit_sharp)
+          ),
+      ],
     );
   }
 }
