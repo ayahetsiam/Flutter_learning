@@ -27,61 +27,59 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String val = " ama";
+ 
 
-  void afficher(BuildContext context) {
-    //  showBottomSheet(context: context, builder: (BuildContext context){
-    //
-    //  });
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    
   }
 
   @override
   Widget build(BuildContext context) {
+
+    
+
+
     return Scaffold(
       appBar: AppBar(),
-      // persistentFooterButtons: const [
-      //     IconButton(
-      //     onPressed: null,
-      //     icon: Icon(Icons.access_alarm_outlined)
-      //     ),
-      //     IconButton(
-      //     onPressed: null,
-      //     icon: Icon(Icons.ac_unit_sharp)
-      //     ),
-      // ],
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            val,
-            style: const TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          TextButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return Container(
-                      padding: const EdgeInsets.all(20),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("voilà",
-                              style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                              )),
-                        ],
-                      ),
-                    );
-                  },
-                );
-              },
-              child: const Text("Click ici"))
-        ],
+
+      bottomNavigationBar: BottomNavigationBar(items: const[
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.call,
+            size: 20,
+            color: Colors.black,),
+            label: "home"
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.call_end,
+            size: 20,
+            color: Colors.black,),
+            label: "holf",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.call_missed_rounded,
+            size: 20,
+            color: Colors.black,),
+            label: "alzj",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.hail,
+            size: 20,
+            color: Colors.black,),
+            label: "Text('data')"
+        ),
+        
+      ],
+      backgroundColor: Colors.amber,
+      selectedFontSize: 30,
+      
+      
       ),
      
     );
