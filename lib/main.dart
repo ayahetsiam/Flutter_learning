@@ -27,61 +27,59 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- 
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    
+  }
+
+  void snackbar() {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(
+        'Le snackbar est fait enfin',
+        style: TextStyle(
+            color: Colors.white,
+            
+            fontWeight: FontWeight.bold),
+      ),
+      backgroundColor: Colors.red,
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
-
-    
-
-
     return Scaffold(
-      appBar: AppBar(),
-
-      bottomNavigationBar: BottomNavigationBar(items: const[
-        BottomNavigationBarItem(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("SnackBar"),
+        leading: const IconButton(
           icon: Icon(
-            Icons.call,
-            size: 20,
-            color: Colors.black,),
-            label: "home"
+            Icons.baby_changing_station,
+            color: Colors.black,
+            size: 50,
+          ),
+          onPressed: null,
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.call_end,
-            size: 20,
-            color: Colors.black,),
-            label: "holf",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.call_missed_rounded,
-            size: 20,
-            color: Colors.black,),
-            label: "alzj",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.hail,
-            size: 20,
-            color: Colors.black,),
-            label: "Text('data')"
-        ),
-        
-      ],
-      backgroundColor: Colors.amber,
-      selectedFontSize: 30,
-      
-      
+        actions: const [
+          IconButton(
+            icon: Icon(Icons.more),
+            onPressed: null,
+          ),
+        ],
       ),
-     
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: snackbar,
+            child: const Text(
+              "supprimer le text",
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }
