@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(fontSize: 20, color: Colors.black),
             ),
             subtitle:
-                Text("il a eté l'homme dont on a parlé il y a de celà 2ans",
+                Text("il a eté l'homme dont on a parlé il y a de cela 2ans",
                 style: TextStyle(fontSize: 12, color: Colors.black),),
           ),
           Divider(color: Colors.black, height: 4,),
