@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -29,7 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,26 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Text("airtogo je sais même pas si ça existe", style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 35, 
-                ),
-                ),
-              ),
-              Expanded(
-                child: Text("description de l'aéroport", style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 35,
-                  color: Colors.blue 
-                ),
-                ),
-              )
-            ],
-          )
+          child: const Column(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [Text("Nom"), Text("Premon")],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [Text("AYAH"), Text("Yawavi")],
+            )
+          ]),
         ),
       ),
     );
