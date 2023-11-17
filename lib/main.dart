@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("Row & column"),
         leading: const IconButton(
           icon: Icon(
-            Icons.baby_changing_station,
+            Icons.alarm_rounded,
             color: Colors.black,
             size: 50,
           ),
@@ -48,20 +48,56 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: Container(
-          alignment: Alignment.center,
-          child: const Column(children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [Text("Nom"), Text("Premon")],
+      body: const Center(
+        child: Column
+        (
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+          ListTile(
+            leading: Icon(Icons.person, size: 40, color: Colors.black,),
+            title: Text("Le personnage",
+            style: TextStyle(fontSize: 20, color: Colors.black),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [Text("AYAH"), Text("Yawavi")],
-            )
-          ]),
-        ),
+            subtitle:
+                Text("il a eté l'homme dont on a parlé il y a de celà 2ans",
+                style: TextStyle(fontSize: 12, color: Colors.black),),
+          ),
+          Divider(color: Colors.black, height: 4,),
+
+          ListTile(
+            leading: Icon(Icons.person, size: 40, color: Colors.black,),
+            title: Text("Quelqu'un",
+            style: TextStyle(fontSize: 20, color: Colors.black),
+            ),
+            subtitle:
+                Text("il a eté l'homme dont on a parlé il y a de celà 2ans",
+                style: TextStyle(fontSize: 12, color: Color.fromARGB(255, 145, 107, 50)),),
+          ),
+          Divider(color: Colors.black, height: 4,),
+
+          ListTile(
+            leading: Icon(Icons.person, size: 40, color: Colors.black,),
+            title: Text("l'individu",
+            style: TextStyle(fontSize: 20, color: Colors.black),
+            ),
+            subtitle:
+                Text("il a eté l'homme dont on a parlé il y a de celà 2ans",
+                style: TextStyle(fontSize: 12, color: Color.fromARGB(255, 145, 107, 50)),),
+          ),
+          Divider(color: Colors.black, height: 4,),
+
+          ListTile(
+            leading: Icon(Icons.person, size: 40, color: Colors.black,),
+            title: Text("Le personnage",
+            style: TextStyle(fontSize: 20, color: Colors.black),
+            ),
+            subtitle:
+                Text("Un projet en général est une entreprise temporaire planifiée et organisée qui vise à atteindre un objectif spécifique dans des délais et des ressources définis.",
+                style: TextStyle(fontSize: 12, color: Color.fromARGB(255, 145, 107, 50)),),
+          ),
+          Divider(color: Colors.black, height: 4,),
+          
+        ]),
       ),
     );
   }
