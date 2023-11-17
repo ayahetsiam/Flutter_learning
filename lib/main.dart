@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
 
@@ -29,30 +29,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int id = 0;
-Future<void> info(BuildContext context)async{
-  await showDialog<Void>(context: context, builder:(BuildContext context){
-    return AlertDialog(content: const Text("veux tu vraiment supprimer le fichier?"),
-    title: const Text("ton avis"),
-    actions: [
-      ElevatedButton(onPressed: (){
-        Navigator.of(context).pop();
-      }, child: const Text("oui")),
 
-      ElevatedButton(onPressed: (){
-        Navigator.of(context).pop();
-      }, child: const Text("Non")),
-    ],
-    );
-  });
-}
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("AlertDialog"),
+        title: const Text("Row & column"),
         leading: const IconButton(
           icon: Icon(
             Icons.baby_changing_station,
@@ -68,40 +51,30 @@ Future<void> info(BuildContext context)async{
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(
-            icon: Icon(
-          Icons.home,
+      body: Center(
+        child: Container(
+          alignment: Alignment.center,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Text("airtogo je sais même pas si ça existe", style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35, 
+                ),
+                ),
+              ),
+              Expanded(
+                child: Text("description de l'aéroport", style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35,
+                  color: Colors.blue 
+                ),
+                ),
+              )
+            ],
+          )
         ),
-        label: "Home",
-        tooltip: "Appuyez pour acceder à la page d'accueil"),
-
-        BottomNavigationBarItem(
-            icon: Icon(
-          Icons.cable,
-        ),
-        label: "cable",
-        tooltip: "Appuyez pour acceder à la page d'accueil",),
-
-        BottomNavigationBarItem(
-            icon: Icon(
-          Icons.message,
-        ),
-        label: "message",
-        tooltip: "Appuyez pour acceder à la page d'accueil")
-      ],
-      fixedColor: Colors.amber,
-      currentIndex: id,
-      onTap: (int ids) {
-       ids = id; 
-      },
-      ),
-
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-        ElevatedButton(onPressed: () => info(context), child: const Text("show alert dialog"))
-        ],
       ),
     );
   }
