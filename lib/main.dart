@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -27,31 +29,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  int id = 0;
+Future<void> info(BuildContext context)async{
+  await showDialog<Void>(context: context, builder:(BuildContext context){
+    return AlertDialog(content: const Text("veux tu vraiment supprimer le fichier?"),
+    title: const Text("ton avis"),
+    actions: [
+      ElevatedButton(onPressed: (){
+        Navigator.of(context).pop();
+      }, child: const Text("oui")),
 
-  void snackbar() {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text(
-        'Le snackbar est fait enfin',
-        style: TextStyle(
-            color: Colors.white,
-            
-            fontWeight: FontWeight.bold),
-      ),
-      backgroundColor: Colors.red,
-    ));
-  }
-
+      ElevatedButton(onPressed: (){
+        Navigator.of(context).pop();
+      }, child: const Text("Non")),
+    ],
+    );
+  });
+}
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("SnackBar"),
+        title: const Text("AlertDialog"),
         leading: const IconButton(
           icon: Icon(
             Icons.baby_changing_station,
@@ -67,19 +68,41 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+            icon: Icon(
+          Icons.home,
+        ),
+        label: "Home",
+        tooltip: "Appuyez pour acceder à la page d'accueil"),
+
+        BottomNavigationBarItem(
+            icon: Icon(
+          Icons.cable,
+        ),
+        label: "cable",
+        tooltip: "Appuyez pour acceder à la page d'accueil",),
+
+        BottomNavigationBarItem(
+            icon: Icon(
+          Icons.message,
+        ),
+        label: "message",
+        tooltip: "Appuyez pour acceder à la page d'accueil")
+      ],
+      fixedColor: Colors.amber,
+      currentIndex: id,
+      onTap: (int ids) {
+       ids = id; 
+      },
+      ),
+
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          ElevatedButton(
-            onPressed: snackbar,
-            child: const Text(
-              "supprimer le text",
-              style: TextStyle(color: Colors.red),
-            ),
-          ),
+        ElevatedButton(onPressed: () => info(context), child: const Text("show alert dialog"))
         ],
-      )),
+      ),
     );
   }
 }
