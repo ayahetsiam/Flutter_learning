@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -34,39 +33,60 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Stack"),
-        leading: const IconButton(
-          icon: Icon(
-            Icons.alarm_rounded,
-            color: Colors.black,
-            size: 50,
-          ),
-          onPressed: null,
-        ),
+        title: const Text("ListViewBuilder"),
         actions: const [
           IconButton(
-            icon: Icon(Icons.more),
+            icon: Icon(Icons.person,size: 30, color: Colors.white,),
             onPressed: null,
           ),
         ],
       ),
-      body: Center(child: Stack(alignment: Alignment.centerLeft,
-      children: [
-        Container(color: Colors.red,
-        height: 300,
-        width: 300,
-      
-        ),
-
-        Container(color: Colors.green,
-        height: 30,
-        width: 200,),
-
-        Container(color: Colors.black,
-        height: 200,
-        width: 100,),
-      ],),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            
+            Text("Le tableau de bord de la banque",
+            style: TextStyle(backgroundColor: Colors.white,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 25),),
+          ],),
+          Container(
+            alignment: Alignment.center,
+            color: const Color.fromARGB(255, 208, 206, 202),
+            height: 500,
+            width: 350,
+            child: getListView(),
+          )
+        ]),
+        
       ),
     );
   }
 }
+
+
+List<String> getListElement(){
+  var item = List<String>.generate(25, (index) => "Article : $index");
+  return item;
+}
+
+Widget getListView(){
+  var listitem = getListElement();
+  var listview = ListView.builder(
+    itemCount: listitem.length,
+    itemBuilder: (context, val){
+   return  ListTile(
+      title: Text(listitem[val]),
+      leading: const Icon(Icons.trending_down),
+    );
+  });
+ return listview;
+}
+
+
+
