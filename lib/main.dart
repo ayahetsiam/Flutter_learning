@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -33,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("ListViewBuilder"),
+        title: const Text("GridBuilder"),
         actions: const [
           IconButton(
             icon: Icon(Icons.person,size: 30, color: Colors.white,),
@@ -41,52 +40,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            
-            Text("Le tableau de bord de la banque",
-            style: TextStyle(backgroundColor: Colors.white,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 25),),
-          ],),
-          Container(
-            alignment: Alignment.center,
-            color: const Color.fromARGB(255, 208, 206, 202),
-            height: 500,
-            width: 350,
-            child: getListView(),
-          )
-        ]),
-        
+        // ignore: non_constant_identifier_names
+        child: OrientationBuilder(builder: (context, Orientation){
+          return GridView.count(crossAxisCount: 2,
+          crossAxisSpacing: 5.0,
+          children: List.generate(12, (index) {
+            return Image.asset("images/R ($index).png");
+          }
+          ),
+          );
+        }),
       ),
+      
     );
   }
 }
-
-
-List<String> getListElement(){
-  var item = List<String>.generate(25, (index) => "Article : $index");
-  return item;
-}
-
-Widget getListView(){
-  var listitem = getListElement();
-  var listview = ListView.builder(
-    itemCount: listitem.length,
-    itemBuilder: (context, val){
-   return  ListTile(
-      title: Text(listitem[val]),
-      leading: const Icon(Icons.trending_down),
-    );
-  });
- return listview;
-}
-
-
-
