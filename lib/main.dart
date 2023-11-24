@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -31,64 +29,193 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("GridBuilder"),
+          title: const Text("Navigator"),
           actions: const [
             IconButton(
-              icon: Icon(Icons.person,size: 30, color: Colors.white,),
+              icon: Icon(
+                Icons.person,
+                size: 30,
+                color: Colors.white,
+              ),
               onPressed: null,
             ),
           ],
         ),
-        body: PageView.builder(
-          itemCount: pages.length,
-          itemBuilder: (context, index) {
-            return pagewidget(entry: pages[index]);
-          },
+        body: Center(
+            child: ListView(padding: const EdgeInsets.all(20), children: [
+          const Text(
+            "Restaurant - menu",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
           ),
-      );
+          const Padding(padding: EdgeInsets.all(10)),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Image.asset(
+              "images/breakfast.jpg",
+              width: 150,
+              height: 150,
+            ),
+             Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Le petit déjeuner anglais ou petit déjeuner irlandais en Irlande ......",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      var route = MaterialPageRoute(
+                        builder: (BuildContext context)=>const MoreDetail(
+                        val1: "breackfast",
+                        val2: "images/breakfast.jpg",
+                      )
+                      );
+                      Navigator.of(context).push(route);
+                    },
+                    child: const Text("Detail"),
+                  ),
+                ],
+              ),
+            )
+          ]),
 
+          const Divider(
+            height: 20,
+            color: Colors.black,
+          ),
+//===============================================================
+          const Padding(padding: EdgeInsets.all(10)),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Image.asset(
+              "images/dinner.jpg",
+              width: 150,
+              height: 150,
+            ),
+            const Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Un repas est un ensemble de nourriture composée de divers mets et ...",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  ElevatedButton(
+                    onPressed: null,
+                    child: Text("Detail"),
+                  ),
+                ],
+              ),
+            )
+          ]),
+
+          const Divider(
+            height: 20,
+            color: Colors.black,
+          ),
+
+          //===========================================================
+          const Padding(padding: EdgeInsets.all(10)),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Image.asset(
+              "images/breakfast.jpg",
+              width: 150,
+              height: 150,
+            ),
+            const Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Un repas est un ensemble de nourriture composée de divers mets et ...",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  ElevatedButton(
+                    onPressed: null,
+                    child: Text("Detail"),
+                  ),
+                ],
+              ),
+            )
+          ]),
+        ])));
   }
 }
 
+class MoreDetail extends StatelessWidget {
+  final String val1;
+  final String val2;
+  const MoreDetail({super.key, required this.val1, required this.val2});
 
-class Pageinfo{
-  final String title;
-  final String image;
-  final String description;
-
-  const Pageinfo(this.title, this.image, this.description);
-}
-final List<Pageinfo> pages=[
-  const Pageinfo("meilleur modele n-1", "images/R (1).png", "1 revolution"),
-  const Pageinfo("meilleur modele n-2", "images/R (2).png", "2 revolution"),
-  const Pageinfo("meilleur modele n-3", "images/R (3).png", "3 revolution"),
-  const Pageinfo("meilleur modele n-4", "images/R (4).png", "4 revolution"),
-  const Pageinfo("meilleur modele n-5", "images/R (5).png", "5 revolution"),
-  const Pageinfo("meilleur modele n-6", "images/R (6).png", "6 revolution"),
-];
-
-// ignore: camel_case_types
-class pagewidget extends StatefulWidget {
-  final Pageinfo entry;
-  const pagewidget({super.key, required this.entry});
-  
-  @override
-  State<pagewidget> createState() => _pagewidgetState();
-}
-
-// ignore: camel_case_types
-class _pagewidgetState extends State<pagewidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(widget.entry.image,width: 100,),
-        Text(widget.entry.title),
-        Text(widget.entry.description)
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Navigator"),
+        actions: const [
+          IconButton(
+            icon: Icon(
+              Icons.person,
+              size: 30,
+              color: Colors.white,
+            ),
+            onPressed: null,
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(children: [
+           Text(
+            val1,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const Padding(padding: EdgeInsets.all(10)),
+          
+          
+              Image.asset(
+                val2,
+                width: 150,
+                height: 150,
+              ),
+              const Text(
+                "Un repas est un ensemble de nourriture composée de divers mets et de boisson que l'on absorbe à des heures précises de la journée. Par extension, le repas est une action spécifique, consacrée à l'alimentation, qui entre dans le cycle des activités journalières. Il est souvent perçu comme un acte naturel car il répond à la satisfaction de besoins physiologiques essentiels",
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 15,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+       
+      ),
     );
   }
 }
+
+
