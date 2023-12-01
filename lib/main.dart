@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
 void main() => runApp(const MyApp());
 
@@ -28,120 +27,135 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-List<String> imagesLink=["images/R (4).png", "images/R (1).png", "images/R (2).png", "images/R (3).png", "images/dinner.jpg"];
-  Widget page(String image, Color couleur, String titre, String explication){
-    return SizedBox(
-      height:100,
-      child: ListTile(
-      title: Text(titre, style: TextStyle(color: couleur),),
-      leading: Image.asset(image),
-      subtitle: Text(explication),
+  
+
+  Widget operator(String operator) {
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: InkWell(
+        child: Container(
+          height: 70,
+          width: 70,
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(color: Color.fromARGB(255, 168, 222, 230)),
+          child: Text(operator, style: const TextStyle(color: Colors.blueGrey, fontSize: 25),),
+        ),
       ),
     );
   }
-  
-  Widget carousel() => FlutterCarousel(
-    items:imagesLink.map((e) =>Image.asset(e, fit: BoxFit.fill,)).toList(),
-    options: CarouselOptions(
-      autoPlay: true, 
-      reverse: true,
-      scrollDirection: Axis.vertical,
-      
-      )
+
+  Widget number(String nombre) {
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: InkWell(
+        child: Container(
+          height: 70,
+          width: 70,
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(color: Colors.white),
+          child: Text(nombre, style: const TextStyle(color: Color.fromARGB(255, 95, 140, 165), fontSize: 25),),
+        ),
+      ),
     );
-  
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   centerTitle: true,
-        //   title: const Text("Form validation"),
-        //   actions: const [
-        //     IconButton(
-        //       icon: Icon(
-        //         Icons.person,
-        //         size: 30,
-        //         color: Colors.white,
-        //       ),
-        //       onPressed: null,
-        //     ),
-        //   ],
-        // ),
-        body: CustomScrollView(
-          
-          slivers: [
-            
-            SliverAppBar(
-              title: const Text("bienvenu au dinner", style: TextStyle(color: Colors.black, fontSize: 30),),
-              centerTitle: true,
-              expandedHeight: 300,
-              pinned: true,
-              backgroundColor: Colors.amber,
-              flexibleSpace: FlexibleSpaceBar(
-                background: carousel(),
-              ),
-              
-            ),
-            SliverFixedExtentList(delegate: SliverChildListDelegate(
-              [const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: SizedBox(
-                  height: 100,
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                  Column(children: [
-                    IconButton(onPressed: null, icon: Icon(Icons.thumb_down)),
-                    Text("j'aime pas"),
-                  ],),
-                  
-                  Column(children: [
-                    IconButton(onPressed: null, icon: Icon(Icons.thumb_up)),
-                    Text("j'aime "),
-                  ],),
-                  Column(children: [
-                    IconButton(onPressed: null, icon: Icon(Icons.comment)),
-                    Text("commentaire"),
-                  ],),
-                  Column(children: [
-                    IconButton(onPressed: null, icon: Icon(Icons.email)),
-                    Text("mail"),
-                  ],),
-                ]),
-                
-                )
-                          ),
-              ),
-            // page("images/R (0).png", Colors.brown, "Images 0", "Donc c'est la 1ere image"),
-            page("images/R (1).png", Colors.black, "Images 1", "Donc c'est la 1ere image"),
-            page("images/R (2).png", Colors.blue, "Images 2", "Donc c'est la 2eme image"),
-            page("images/R (3).png", Colors.red, "Images 3", "Donc c'est la 3eme image"),
-            page("images/R (4).png", Colors.brown, "Images 4", "Donc c'est la 4eme image"),
-            page("images/R (5).png", Colors.purple, "Images 5", "Donc c'est la 5eme image"),
-            page("images/R (1).png", Colors.black, "Images 1", "Donc c'est la 1ere image"),
-            page("images/R (2).png", Colors.blue, "Images 2", "Donc c'est la 2eme image"),
-            page("images/R (3).png", Colors.red, "Images 3", "Donc c'est la 3eme image"),
-            page("images/R (4).png", Colors.brown, "Images 4", "Donc c'est la 4eme image"),
-            page("images/R (5).png", Colors.purple, "Images 5", "Donc c'est la 5eme image")
-            ],
-            ),
-            itemExtent: 100)
-          ],
-        
-        )
-        // Padding(
-      // padding: const EdgeInsets.symmetric(horizontal: 24).copyWith(top: 20),
-      // child: ListView(
-      //   children: [
-      //     const SizedBox(height: 20, ),
-      //     Container(color: Colors.blue,
-      //       child: carousel,
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: const Text("Calculatrice"),
+      //   actions: const [
+      //     IconButton(
+      //       icon: Icon(
+      //         Icons.person,
+      //         size: 30,
+      //         color: Colors.white,
+      //       ),
+      //       onPressed: null,
       //     ),
-          
       //   ],
       // ),
+      body: Center(
+        child: Container(
+          alignment: Alignment.center,
+          height: 500,
+          width: 297,
+          color: const Color.fromARGB(255, 155, 174, 174),
+          // decoration: BoxDecoration(
+          //     borderRadius: BorderRadius.circular(20), color: Colors.black),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                height: 125,
+                color: Colors.blueGrey,
+                alignment: Alignment.bottomRight,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                  Text("5 * 100", style: TextStyle(fontSize: 20, color: Colors.white),),
+                  Text("=500",  style: TextStyle(fontSize: 30, color: Colors.yellow))
+                ]),
+                
+              ),
+              Column(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      operator("CE"),
+                      operator("C"),
+                      operator("/"),
+                      operator("C"),
+
+                      
+                      // operator(icon)
+                      // IconButton(onPressed: onPressed, icon: icon)
+                    ],
+                    
+                  ),
+                  Row(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                    number("1"),
+                       number("2"),
+                        number("3"),
+                        operator("+")
+                  ],),
+
+                  Row(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                   number("4"),
+                          number("5"),
+                           number("6"),
+                        operator("-")
+                  ],),
+
+                  Row(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                   number("7"),
+                             number("8"),
+                              number("9"),
+                        operator("*")
+                  ],),
+                  Row(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                   number("-"),
+                             number("0"),
+                              number("."),
+                        operator("=")
+                  ],),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
